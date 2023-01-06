@@ -47,7 +47,7 @@
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
 								<a class="nav-link active"
-								aria-current="page" href="http://localhost:8080/pet-care/booking.jsp">Home
+								aria-current="page" href="http://localhost:8080/pet-care/home.jsp">Home
 								</a>	
 							</li>
 							
@@ -62,7 +62,11 @@
 								aria-current="page" href="#">Shops
 								</a>
 							</li>
-							
+							<li class="nav-item">
+								<a class="nav-link active"
+								aria-current="page" href="http://localhost:8080/pet-care/booking.jsp">Bookings
+								</a>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link active"
 								aria-current="page" href="#">Contact Us
