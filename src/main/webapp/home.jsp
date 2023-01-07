@@ -1,4 +1,4 @@
-<%@page import="util.DummyMedicalService"%>
+<%@page import="entity.MedicalService"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -18,14 +18,14 @@
 	crossorigin="anonymous">
 	
 <c:set var = "services" value = '<%= Arrays.asList(
-		new DummyMedicalService(1,"BOARDING", "boarding description", "public/images/boarding.png", 10.10),
-		new DummyMedicalService(2,"DESEXING" ,"desexing description", "public/images/desexing.png", 10.10),
-		new DummyMedicalService(3,"CONSULTATION" ,"consultations description", "public/images/consultation.png", 10.10),
-		new DummyMedicalService(4,"DENTISTRY" ,"dentistry description", "public/images/dentistry.png", 10.10),
-		new DummyMedicalService(5,"MICROCHIPING" ,"microchiping description", "public/images/microchip.png", 10.10),
-		new DummyMedicalService(6,"WORMING" ,"worming description", "public/images/worming.png", 10.10),
-		new DummyMedicalService(7,"SURGERY" ,"surgery description", "public/images/surgery.png", 10.10),
-		new DummyMedicalService(8,"IMAGING" ,"imaging description", "public/images/imaging.png", 10.10)
+		new MedicalService(1,"BOARDING", "boarding description", "public/images/boarding.png"),
+		new MedicalService(2,"DESEXING" ,"desexing description", "public/images/desexing.png"),
+		new MedicalService(3,"CONSULTATION" ,"consultations description", "public/images/consultation.png"),
+		new MedicalService(4,"DENTISTRY" ,"dentistry description", "public/images/dentistry.png"),
+		new MedicalService(5,"MICROCHIPING" ,"microchiping description", "public/images/microchip.png"),
+		new MedicalService(6,"WORMING" ,"worming description", "public/images/worming.png"),
+		new MedicalService(7,"SURGERY" ,"surgery description", "public/images/surgery.png"),
+		new MedicalService(8,"IMAGING" ,"imaging description", "public/images/imaging.png")
 		) %>'></c:set>
 		
 </head>

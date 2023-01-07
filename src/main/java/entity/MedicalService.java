@@ -1,4 +1,4 @@
-package util;
+package entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,12 +12,28 @@ public class MedicalService {
         this.ID = ID;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public Date getCostValidFrom() {
@@ -61,16 +77,20 @@ public class MedicalService {
     }
 
     private Integer ID;
+    private String name;
     private String description;
+    private String imageURL;
     private Date costValidFrom;
     private BigDecimal cost;
     private Boolean requiresSpecialist;
     private String requiresSpecialistField;
     private Integer labID;
 
-    public MedicalService(Integer ID, String description, Date costValidFrom, BigDecimal cost, Boolean requiresSpecialist, String requiresSpecialistField, Integer labID) {
+    public MedicalService(Integer ID, String name, String description, String imageURL, Date costValidFrom, BigDecimal cost, Boolean requiresSpecialist, String requiresSpecialistField, Integer labID) {
         this.ID = ID;
+        this.name = name;
         this.description = description;
+        this.imageURL = imageURL;
         this.costValidFrom = costValidFrom;
         this.cost = cost;
         this.requiresSpecialist = requiresSpecialist;
@@ -80,4 +100,12 @@ public class MedicalService {
 
     public MedicalService() {
     }
+
+    public MedicalService(Integer ID, String name, String description, String imageURL) {
+        this.ID = ID;
+        this.name = name;
+        this.description = description;
+        this.imageURL = imageURL;
+    }
+
 }

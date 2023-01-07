@@ -1,4 +1,4 @@
-package util;
+package entity;
 
 public class VetAssignment {
     private int ID;
