@@ -1,3 +1,4 @@
+
 <%@page import="entity.MedicalService"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
@@ -43,13 +44,15 @@
 	
 			<c:forEach var="service" items="${services}">
 				<div class="card" style="width: 18rem;">
-				<img src="${service.imageUrl} " class="card-img-top w-25 " alt="...">
-				<div class="card-body">
-					<h5 class="card-title">${service.name}</h5>
-					<p class="card-text">${service.description}</p>
-					<a href="#" class="card-link">Learn More ...</a>
+					<img src="${service.imageURL} " class="card-img-top w-25 " alt="...">
+					<div class="card-body">
+						<h5 class="card-title">${service.name}</h5>
+						<p class="card-text">${service.description}</p>
+						<a href="#" class="card-link">Learn More ...</a>
+					</div> 
 				</div>
-			</div>
+				
+			
 			</c:forEach>
 
 		</div>
