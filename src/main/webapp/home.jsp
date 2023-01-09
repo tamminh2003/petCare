@@ -17,18 +17,6 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
-	
-<c:set var = "services" value = '<%= Arrays.asList(
-		new MedicalService(1,"BOARDING", "boarding description", "public/images/boarding.png"),
-		new MedicalService(2,"DESEXING" ,"desexing description", "public/images/desexing.png"),
-		new MedicalService(3,"CONSULTATION" ,"consultations description", "public/images/consultation.png"),
-		new MedicalService(4,"DENTISTRY" ,"dentistry description", "public/images/dentistry.png"),
-		new MedicalService(5,"MICROCHIPING" ,"microchiping description", "public/images/microchip.png"),
-		new MedicalService(6,"WORMING" ,"worming description", "public/images/worming.png"),
-		new MedicalService(7,"SURGERY" ,"surgery description", "public/images/surgery.png"),
-		new MedicalService(8,"IMAGING" ,"imaging description", "public/images/imaging.png")
-		) %>'></c:set>
-		
 </head>
 <body>
 	<!-- Header starts -->
@@ -39,24 +27,9 @@
 		<div class="">Banner</div>
 		<hr>
 		<h1>OUR SERVICES</h1>
-		<div class="container d-flex flex-wrap justify-content-center gap-3 p-5">
-		
-	
-			<c:forEach var="service" items="${services}">
-				<div class="card" style="width: 18rem;">
-					<img src="${service.imageURL} " class="card-img-top w-25 " alt="...">
-					<div class="card-body">
-						<h5 class="card-title">${service.name}</h5>
-						<p class="card-text">${service.description}</p>
-						<a href="#" class="card-link">Learn More ...</a>
-					</div> 
-				</div>
-				
-			
-			</c:forEach>
-
-		</div>
-		
+			<!-- common service -->
+			<jsp:include page="components/common.service.jsp" />
+			<!-- ends -->
 	</div>
 
 	<!-- Footer starts -->
