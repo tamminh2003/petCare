@@ -1,3 +1,4 @@
+
 <%@page import="entity.MedicalService"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
@@ -38,7 +39,7 @@
 			<div class="card-body">
 				<h5 class="card-title">${service.name}</h5>
 				<p class="card-text">${service.description}</p>
-				<a href="#" class="card-link">Learn More ...</a>
+				<a href="http://localhost:8080/pet-care/serviceDetail.jsp?name=${service.name}&description=${service.description}&imageUrl=${service.imageURL}" class="card-link">Learn More ...</a>
 			</div> 
 		</div>
 	</c:forEach>
