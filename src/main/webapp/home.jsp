@@ -29,6 +29,7 @@
 		<h1>OUR SERVICES</h1>
 			<!-- common service -->
 			<jsp:include page="components/common.service.jsp" />
+			
 			<!-- ends -->
 	</div>
 
