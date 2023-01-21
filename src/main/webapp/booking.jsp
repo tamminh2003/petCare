@@ -19,44 +19,60 @@
 
 	<div class="container ">
 
-		<div class="container border border-dark border-1 p-3 m-3">
+		<div class="container border border-dark border-1 p-3 m-3 position-relative">
 			<div class="row">
-				<div class="col">Dr Alex Johnson</div>
-				<div class="col-9">
-					<table class="table table-dark table-striped-columns">
-						<thead>
-							<tr>
-								<th >Mon</th>
-								<th >Tue</th>
-								<th >Weds</th>
-								<th >Thurs</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>9:00 - 9:15</td>
-								<td>10:00 - 10:15 -</td>
-								<td>11:00 - 11:15</td>
-								<td>11:15 - 11:30</td>
-							</tr>
-							<tr>
-								<td>9:00 - 9:15</td>
-								<td>10:00 - 10:15 -</td>
-								<td>11:00 - 11:15</td>
-								<td>11:15 - 11:30</td>
-							</tr>
-							<tr>
-								<td>9:00 - 9:15</td>
-								<td>10:00 - 10:15 -</td>
-								<td>11:00 - 11:15</td>
-								<td>11:15 - 11:30</td>
-							</tr>
-						</tbody>
+				<form action="BookingDetailServlet">
+					<div class="mb-3">
+						<label for="customerName" class="form-label">Your
+							Name</label> 
+							 <input type=text class="form-control mb-2"
+							id="firstName" name="firstName" placeholder ="First Name">
+							
+								 <input type="text" class="form-control"
+							id="lastName" name="lastName" placeholder ="Last Name">
 
-					</table>
-				</div>
+					</div>
+					<div class="mb-3">
+						<label for="contactDetail" class="form-label">Contact Details</label>
+						 <input type="email" class="form-control mb-2"
+							id="email" name="email" placeholder ="Email Address">
+							
+								 <input type="tel" class="form-control"
+							id="phoneNumber" name="phoneNumber" placeholder ="Phone Number">
+					</div>
+					
+					<div class="mb-3">
+						<label for="petType" class="form-label">Pet Type</label>
+						<select class="form-select" id="petType" name="petType">
+						  <option selected>Choose your pet type...</option>
+						  <option value="1">Dog</option>
+						  <option value="2">Cat</option>
+						  <option value="3">Bird</option>
+						</select>
+					</div>
+					
+						<div class="mb-5">
+						<label for="appointmentType" class="form-label">Appointment Type</label>
+						<select class="form-select" id="appoinmentType" name="appoinmentType" >
+						  <option selected>Choose your appoinment type...</option>
+						  <option value="1">Vaccination</option>
+						  <option value="2">Consultation - Check up simple issue</option>
+						  <option value="3">Consultation - Sick / Injured Pets</option>
+							<option value="4">New Pet Boarding</option>
+						</select>
+					</div>
+					
+					
+				
+					<button type="submit" class="btn btn-primary">Next</button>
+			
+					
+				</form>
+
+
 			</div>
 		</div>
+	</div>
 
 
 

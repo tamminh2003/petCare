@@ -18,8 +18,12 @@
 			<div class="container ps-5">
 				<div class="row">
 						<div class="col-6">
-				<button type="button" class="btn btn-primary">Book
-					Appointment</button>
+						
+			     <a href="/pet-care/BookingServlet">  
+			      <button type="button" class="btn btn-primary">Book
+					Appointment</button> 
+			     </a>
+			
 			</div>
 			<div class="col">
 				<div>1068 Victoria Road</div>
@@ -89,5 +93,12 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 		crossorigin="anonymous"></script>
+		
+		
+	<script>
+		function handleClickBooking() {
+			console.log("Booking clicked");
+		}
+	</script>
 </body>
 </html>
