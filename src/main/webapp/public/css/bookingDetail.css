@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.time-button {
+	border: thin black solid;
+  width: 100px;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 10px;
+	text-align: center;
+	  display: inline-block;
+	  cursor: pointer;
+}
+
+.selected {
+  background-color: red;
+} 
