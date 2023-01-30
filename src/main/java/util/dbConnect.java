@@ -8,8 +8,8 @@ class dbConnect{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/cinema?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false"
-            		,"admin"
-            		,"admin"
+            		,"petcare_webapp_user"
+            		,"petcare_webapp_user"
             		);
             return con;
 //            Statement stmt=con.createStatement();

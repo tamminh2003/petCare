@@ -70,7 +70,15 @@ VALUES (1, 'EXAM1', 'General check-up', '2022-01-01', 100, 0, '', 1),
        (13, 'CONSULT1', 'Surgical Consultation', '2022-01-01', 95, 0, '', null),
        ('14', 'BLOOD1', 'Blood test glucose', '2022-01-01 00:00:00', '60', '0', 'null', '2'),
        ('15', 'BLOOD2', 'Blood test liver function', '2022-01-01 00:00:00', '65', '0', '', '2');
-
+UPDATE `pet_care`.`medicalservice` SET `NEEDSBOOKINGBYVET` = '1' WHERE (`ID` = '2');
+UPDATE `pet_care`.`medicalservice` SET `NEEDSBOOKINGBYVET` = '1' WHERE (`ID` = '3');
+UPDATE `pet_care`.`medicalservice` SET `NEEDSBOOKINGBYVET` = '1' WHERE (`ID` = '4');
+UPDATE `pet_care`.`medicalservice` SET `NEEDSBOOKINGBYVET` = '1' WHERE (`ID` = '5');
+UPDATE `pet_care`.`medicalservice` SET `NEEDSBOOKINGBYVET` = '1' WHERE (`ID` = '6');
+UPDATE `pet_care`.`medicalservice` SET `NEEDSBOOKINGBYVET` = '1' WHERE (`ID` = '9');
+UPDATE `pet_care`.`medicalservice` SET `NEEDSBOOKINGBYVET` = '1' WHERE (`ID` = '14');
+UPDATE `pet_care`.`medicalservice` SET `NEEDSBOOKINGBYVET` = '1' WHERE (`ID` = '15');
+ 
 
 INSERT INTO timespot(ID, STARTTIME, ENDTIME)
 VALUES

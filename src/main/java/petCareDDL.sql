@@ -111,6 +111,7 @@ CREATE TABLE `pet_care`.`medicalservice`
     `REQUIRESSPECIALIST`      BOOLEAN        NOT NULL,
     `REQUIRESSPECIALISTFIELD` VARCHAR(45)    NOT NULL,
     `LABID`                   INT            NULL,
+    `NEEDSBOOKINGBYVET`       BOOLEAN        NOT NULL,
     PRIMARY KEY (`ID`),
     CONSTRAINT `FK_LAB_ID`
         FOREIGN KEY (`LABID`)
