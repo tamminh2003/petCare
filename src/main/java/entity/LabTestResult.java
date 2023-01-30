@@ -8,10 +8,6 @@ public class LabTestResult {
     private String result;
     private Timestamp releasedAt;
 
-    public LabTestResult() {
-        super();
-    }
-
     public LabTestResult(int id, Timestamp orderedAt, String result, Timestamp releasedAt) {
         super();
         this.id = id;

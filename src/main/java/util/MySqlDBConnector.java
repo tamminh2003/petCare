@@ -1,7 +1,7 @@
 package util;
 import java.sql.*;
 
-class dbConnect{
+class MySqlDBConnector{
     public static Connection getConnection(){
         try
         {

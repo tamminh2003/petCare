@@ -11,10 +11,6 @@ public class Customer {
     private Timestamp registeredAt;
     private String currentPassword;
 
-    public Customer() {
-        super();
-    }
-
     public Customer(int id, String name, String email, String phoneNumber, String postCode, Timestamp registeredAt, String currentPassword) {
         super();
         this.id = id;
@@ -81,4 +77,6 @@ public class Customer {
     public void setCurrentPassword(String currentPassword) {
         this.currentPassword = currentPassword;
     }
+    
+    
 }

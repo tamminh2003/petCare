@@ -1,53 +1,49 @@
 package entity;
 
-import java.sql.Timestamp;
+import java.math.BigDecimal;
 
 public class MedicalServiceBooked {
-    private Integer appointmentID;
-    private Integer ServiceID;
-    private Integer resultID;
+    private int appointmentId;
+    private int serviceId;
+    private int resultId;
+    private BigDecimal costAtConfirmedTime;
 
-    public Integer getAppointmentID() {
-        return appointmentID;
+    public int getAppointmentId() {
+        return appointmentId;
     }
 
-    public void setAppointmentID(Integer appointmentID) {
-        this.appointmentID = appointmentID;
+    public void setAppointmentId(int appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
-    public Integer getServiceID() {
-        return ServiceID;
+    public int getServiceId() {
+        return serviceId;
     }
 
-    public void setServiceID(Integer serviceID) {
-        ServiceID = serviceID;
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
     }
 
-    public Integer getResultID() {
-        return resultID;
+    public int getResultId() {
+        return resultId;
     }
 
-    public void setResultID(Integer resultID) {
-        this.resultID = resultID;
+    public void setResultId(int resultId) {
+        this.resultId = resultId;
     }
 
-    public Timestamp getCostAtConfirmedTime() {
+    public BigDecimal getCostAtConfirmedTime() {
         return costAtConfirmedTime;
     }
 
-    public void setCostAtConfirmedTime(Timestamp costAtConfirmedTime) {
+    public void setCostAtConfirmedTime(BigDecimal costAtConfirmedTime) {
         this.costAtConfirmedTime = costAtConfirmedTime;
     }
 
-    private Timestamp costAtConfirmedTime;
-
-    public MedicalServiceBooked() {
-    }
-
-    public MedicalServiceBooked(Integer appointmentID, Integer serviceID, Integer resultID, Timestamp costAtConfirmedTime) {
-        this.appointmentID = appointmentID;
-        ServiceID = serviceID;
-        this.resultID = resultID;
+    public MedicalServiceBooked(int appointmentId, int serviceId, int resultId, BigDecimal costAtConfirmedTime) {
+        this.appointmentId = appointmentId;
+        this.serviceId = serviceId;
+        this.resultId = resultId;
         this.costAtConfirmedTime = costAtConfirmedTime;
     }
 }

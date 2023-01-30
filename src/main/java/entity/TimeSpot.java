@@ -3,16 +3,16 @@ package entity;
 import java.sql.Time;
 
 public class TimeSpot {
-    private int ID;
+    private int id;
     private Time startTime;
     private Time endTime;
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Time getStartTime() {
@@ -31,13 +31,10 @@ public class TimeSpot {
         this.endTime = endTime;
     }
 
-    public TimeSpot(int ID, Time startTime, Time endTime) {
-        this.ID = ID;
+    public TimeSpot(int id, Time startTime, Time endTime) {
+        this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
-    public TimeSpot(Time startTime) {
-        this.startTime = startTime;
-    }
 }

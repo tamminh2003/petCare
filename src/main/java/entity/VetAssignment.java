@@ -1,41 +1,51 @@
 package entity;
 
+import java.util.Date;
+
 public class VetAssignment {
-    private int ID;
-    private int vetID;
-    private int spotID;
+    private int id;
+    private int vetId;
+    private int spotId;
+    private Date date;
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getVetID() {
-        return vetID;
+    public int getVetId() {
+        return vetId;
     }
 
-    public void setVetID(int vetID) {
-        this.vetID = vetID;
+    public void setVetId(int vetId) {
+        this.vetId = vetId;
     }
 
-    public int getSpotID() {
-        return spotID;
+    public int getSpotId() {
+        return spotId;
     }
 
-    public void setSpotID(int spotID) {
-        this.spotID = spotID;
+    public void setSpotId(int spotId) {
+        this.spotId = spotId;
     }
 
-    public VetAssignment(int ID, int vetID, int spotID) {
-        this.ID = ID;
-        this.vetID = vetID;
-        this.spotID = spotID;
-    }
+	public Date getDate() {
+		return date;
+	}
 
-    public VetAssignment(int spotID) {
-        this.spotID = spotID;
-    }
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public VetAssignment(int id, int vetId, int spotId, Date date) {
+		super();
+		this.id = id;
+		this.vetId = vetId;
+		this.spotId = spotId;
+		this.date = date;
+	}
+
 }
