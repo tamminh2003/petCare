@@ -18,7 +18,7 @@
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
 
-<c:set var = "services" value = '<%= Arrays.asList(
+<%-- <c:set var = "services" value = '<%= Arrays.asList(
 		new MedicalService(1,"BOARDING", "boarding description", "public/images/boarding.png"),
 		new MedicalService(2,"DESEXING" ,"desexing description", "public/images/desexing.png"),
 		new MedicalService(3,"CONSULTATION" ,"consultations description", "public/images/consultation.png"),
@@ -27,7 +27,7 @@
 		new MedicalService(6,"WORMING" ,"worming description", "public/images/worming.png"),
 		new MedicalService(7,"SURGERY" ,"surgery description", "public/images/surgery.png"),
 		new MedicalService(8,"IMAGING" ,"imaging description", "public/images/imaging.png")
-		) %>'></c:set>
+		) %>'></c:set> --%>
 
 </head>
 <body>

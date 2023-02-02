@@ -1,13 +1,13 @@
 package util;
 import java.sql.*;
 
-class MySqlDBConnector{
-    public static Connection getConnection(){
+public class MySqlDBConnector{
+    public static Connection makeConnection(){
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/cinema?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false"
+                    "jdbc:mysql://localhost:3306/pet_care?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false"
             		,"petcare_webapp_user"
             		,"petcare_webapp_user"
             		);
@@ -24,5 +24,4 @@ class MySqlDBConnector{
         }
         return null;
     }
-
 }

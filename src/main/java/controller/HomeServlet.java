@@ -1,4 +1,4 @@
-package com.pet.care.servlet;
+package controller;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ import entity.MedicalService;
 /**
  * Servlet implementation class homeServlet
  */
-@WebServlet("/HomeServlet")
+@WebServlet("/home")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
