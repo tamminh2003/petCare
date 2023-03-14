@@ -1,4 +1,4 @@
-package entity;
+package main.java.entity;
 
 public class Lab {
     private int id;

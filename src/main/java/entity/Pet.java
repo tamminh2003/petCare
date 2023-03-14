@@ -1,6 +1,6 @@
-package entity;
-import util.Spiecies;
-import util.PetGender;
+package main.java.entity;
+import main.java.util.Spiecies;
+import main.java.util.PetGender;
 
 import java.sql.Timestamp;
 import java.util.Date;

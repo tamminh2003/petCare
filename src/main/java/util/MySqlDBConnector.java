@@ -1,4 +1,4 @@
-package util;
+package main.java.util;
 import java.sql.*;
 
 public class MySqlDBConnector{
