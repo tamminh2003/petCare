@@ -3,80 +3,71 @@ package main.java.entity;
 import java.sql.Timestamp;
 
 public class Customer {
-    private int id;
-    private String name;
-    private String email;
-    private String phoneNumber;
-    private String postCode;
-    private Timestamp registeredAt;
-    private String currentPassword;
+	private int id;
+	private String firstname;
+	private String lastname;
+	private String email;
+	private Timestamp createdAt;
+	private String password;
 
-    public Customer(int id, String name, String email, String phoneNumber, String postCode, Timestamp registeredAt, String currentPassword) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.postCode = postCode;
-        this.registeredAt = registeredAt;
-        this.currentPassword = currentPassword;
-    }
+	public Customer(int id, String firstname, String lastname, String email, Timestamp createdAt, String password) {
+		super(); // not really needed as java implicitly inherit Object class
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.createdAt = createdAt;
+		this.password = password;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getFirstname() {
+		return firstname;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getLastname() {
+		return lastname;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getPostCode() {
-        return postCode;
-    }
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
 
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
+	// TODO: Usually we don't modify createdAt information.
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
 
-    public Timestamp getRegisteredAt() {
-        return registeredAt;
-    }
+	// TODO: This need to be encrypted
+	public String getPassword() {
+		return password;
+	}
 
-    public void setRegisteredAt(Timestamp registeredAt) {
-        this.registeredAt = registeredAt;
-    }
-
-    public String getCurrentPassword() {
-        return currentPassword;
-    }
-
-    public void setCurrentPassword(String currentPassword) {
-        this.currentPassword = currentPassword;
-    }
-    
-    
+	// TODO: THis need to be encrypted
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
