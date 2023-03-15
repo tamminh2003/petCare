@@ -5,9 +5,12 @@ Focus on these first:
 - Anyone including users can book multiple appointments.
 - Pet's name, customer's email address, and customer postcode are optional in an appointment, however, customers are encouraged to give such information and register to be a user, and also register their pet(s).
 - 1 veterinarian can have many bookings and many bookings can be done by 1 customer
+
 Backlog:
 - Anyone can create an account and become a user.
 - 1 customer's email address can register 1 account only.
+
+
 Future consideration:
 - At the vet's, there are also different medicines in stock for treatments at the vet and for customer to buy and perform treatments at home.
 - During the appointments, different health services like X-ray, blood work, special eye check, vaccinations, surgeries,... may be performed. All services have different code and price.
