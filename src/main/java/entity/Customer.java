@@ -7,10 +7,11 @@ public class Customer {
 	private String firstname;
 	private String lastname;
 	private String email;
+	private String phoneNumber;
 	private Timestamp createdAt;
 	private String password;
 
-	public Customer(int id, String firstname, String lastname, String email, Timestamp createdAt, String password) {
+	public Customer(int id, String firstname, String lastname, String email, String phoneNumber, Timestamp createdAt, String password) {
 		super(); // not really needed as java implicitly inherit Object class
 		this.id = id;
 		this.firstname = firstname;
@@ -18,6 +19,7 @@ public class Customer {
 		this.email = email;
 		this.createdAt = createdAt;
 		this.password = password;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public int getId() {
@@ -50,6 +52,16 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public Timestamp getCreatedAt() {
