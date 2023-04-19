@@ -38,7 +38,7 @@ Future consideration:
 None at the current state. However, some can be identified for extended functionalities.
 
 ## Entity Relationship Diagram
-![ERD](docs/PetCareSystemERD.png)
+![225870637-0a7fb38c-db0c-4e12-bb79-795add81ed23](https://user-images.githubusercontent.com/8927582/233050428-edabdb20-a799-49fe-9e19-f3bc87b60a71.png)
 
 ## Prospective extended functionalities:
 - **(security)** Encode users' passwords in the db.
