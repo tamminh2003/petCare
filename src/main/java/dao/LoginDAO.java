@@ -13,14 +13,14 @@ public class LoginDAO {
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 
-		String sqlQuery = "SELECT * FROM `customer` WHERE email = ? AND currentpassword = ?";
+		String sqlQuery = "SELECT * FROM Customer WHERE email = ? AND password = ?";
 		
 		try {
 			ps = connection.prepareStatement(sqlQuery);
 			ps.setString(1, username);
 			ps.setString(2, password);
 			rs = ps.executeQuery();
-			
+			System.out.println(rs);
 			if (rs.next() == true) {  
 				loginSuccessful = true;
 			}
