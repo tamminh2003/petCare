@@ -5,32 +5,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import main.java.util.MySqlDBConnector;
 
-public class LoginDAO {
-	public boolean checkUserByPasswordAndUsername(String username, String password) {
+public class SignupDAO {
+	public void createNewUser(String firstname, String lastname, String phoneNumber, String email, String password) {
 		boolean loginSuccessful = false;
 		Connection connection = MySqlDBConnector.makeConnection();
 		System.out.println(connection);
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 
-		String sqlQuery = "SELECT * FROM Customer WHERE email = ? AND password = ?";
+		String sqlQuery = "INSERT INTO Customer(firstname, lastname, phoneNumber, email, password) VALUES (?,?,?,?,?)";
 		
 		try {
 			ps = connection.prepareStatement(sqlQuery);
-			ps.setString(1, username);
+			ps.setString(1, firstname);
+			ps.setString(2, lastname);
+			ps.setString(2, phoneNumber);
+			ps.setString(2, email);
 			ps.setString(2, password);
-			rs = ps.executeQuery();
-			System.out.println(rs);
-			if (rs.next() == true) {  
-				loginSuccessful = true;
-			}
+
+			ps.executeUpdate();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(rs != null) {
-					rs.close();
-				}
 				if(ps != null) {
 					ps.close();
 				}
@@ -41,7 +39,5 @@ public class LoginDAO {
 				e.printStackTrace();
 			}
 		}
-
-		return loginSuccessful;
 	}
 }

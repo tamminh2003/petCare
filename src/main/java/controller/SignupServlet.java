@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import main.java.dao.UserDAO;
 
 
 /**
@@ -51,20 +52,30 @@ public class SignupServlet extends HttpServlet {
 		System.out.println(email);
 		System.out.println(password);
 		
-		response.sendRedirect("home");
 
-//		LoginDAO userDAO = new LoginDAO();
-//		boolean loginSuccessful = userDAO.checkUserByPasswordAndUsername(email, password);
-//		
-//		if (loginSuccessful) {
-//			request.getSession().setAttribute("user", email);
-//			response.sendRedirect("home");
-//		} else {
-//			String error = "Incorrect user or password";
-//			request.setAttribute("error", error);
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-//			dispatcher.forward(request,  response);		
-//		}
+		UserDAO userDAO = new UserDAO();
+		
+		boolean checkUserExisted = userDAO.checkUserExisted(email);
+		
+		if (!checkUserExisted) {
+			boolean createNewUserSuccessful = userDAO.createNewUser(firstname, lastname,phoneNumber, email, password );
+			
+			if (createNewUserSuccessful) {
+				response.sendRedirect("login");
+			} else {
+				String error = "There was a problem creating new user, please try again.";
+				request.setAttribute("error", error);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
+				dispatcher.forward(request,  response);		
+			}
+		} else {
+			String error = "This email has been used before.";
+			request.setAttribute("error", error);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
+			dispatcher.forward(request,  response);	
+		}
+		
+		
 	}
 
 }

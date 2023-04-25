@@ -17,7 +17,7 @@
 		<form action="signup" method = "post">
 			<div class="d-flex flex-column  align-items-center ">
 			  <div class="mb-3">
-			    <input type="text" class="form-control" placeholder="First Name" name="fistname">
+			    <input type="text" class="form-control" placeholder="First Name" name="firstname">
 			  </div>
 			  <div class="mb-3">
 			    <input type="text" class="form-control" placeholder="Last Name"  name="lastname">
@@ -37,6 +37,10 @@
 			  </div>	
 			</div>	
 		</form>
+		
+		
+	<br>
+	${error}
 		
 	</div>
 

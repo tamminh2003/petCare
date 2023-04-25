@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.dao.LoginDAO;
+import main.java.dao.UserDAO;
 
 
 
@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		LoginDAO userDAO = new LoginDAO();
+		UserDAO userDAO = new UserDAO();
 		boolean loginSuccessful = userDAO.checkUserByPasswordAndUsername(email, password);
 		
 		if (loginSuccessful) {
