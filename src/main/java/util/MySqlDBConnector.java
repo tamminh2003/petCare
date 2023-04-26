@@ -3,7 +3,7 @@ package main.java.util;
 import java.sql.*;
 
 public class MySqlDBConnector {
-	private static final String dbUrl = "jdbc:mysql://database-1.c3uetrh9pjdr.ap-southeast-2.rds.amazonaws.com";
+	private static final String dbUrl = "jdbc:mysql://database-1.c3uetrh9pjdr.ap-southeast-2.rds.amazonaws.com/appPetCare";
 	private static final String dbUsername = "admin";
 	private static final String dbPassword = "PetCare123";
 

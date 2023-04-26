@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.dao.LoginDAO;
+import main.java.dao.UserDAO;
 
 
 
@@ -43,14 +43,14 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
+		String email = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		LoginDAO userDAO = new LoginDAO();
-		boolean loginSuccessful = userDAO.checkUserByPasswordAndUsername(username, password);
+		UserDAO userDAO = new UserDAO();
+		boolean loginSuccessful = userDAO.checkUserByPasswordAndUsername(email, password);
 		
 		if (loginSuccessful) {
-			request.getSession().setAttribute("user", username);
+			request.getSession().setAttribute("user", email);
 			response.sendRedirect("home");
 		} else {
 			String error = "Incorrect user or password";
