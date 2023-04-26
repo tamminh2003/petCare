@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS Appointment
 	appointmentDate Date NOT NULL,
 	startTime time NOT NULL,
 	description VARCHAR(255),
-	appointmentType int NOT NULL, -- TODO: link this to appointmentType table
-	petType int NOT NULL, -- TODO: link this to petType table
+	appointmentType VARCHAR(255) NOT NULL, -- TODO: link this to appointmentType table
+	petType VARCHAR(255) NOT NULL, -- TODO: link this to petType table
 	totalCost decimal(9,2) DEFAULT 0.0,
 	isPaid boolean DEFAULT False,
 	PRIMARY KEY (id)
