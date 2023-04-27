@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Customer
 	PRIMARY KEY (id)
 );
 
-INSERT INTO appPetCare.Customer (firstname, lastname, email, phoneNumber, password) VALUES('John', 'Smith', 'johnsmith@mail.com', '+61 412 345 678' '12345');
+INSERT INTO appPetCare.Customer (firstname, lastname, email, phoneNumber, password) VALUES('John', 'Smith', 'johnsmith@mail.com', '+61 412 345 678', '12345');
 INSERT INTO appPetCare.Customer (firstname, lastname, email, phoneNumber, password) VALUES('Jane', 'Doe', 'janedoe@mail.com', '0491 570 156', '12345');
 INSERT INTO appPetCare.Customer (firstname, lastname, email, phoneNumber ,password) VALUES('Bob', 'Johnson', 'bobjohnson@mail.com', '0491 570 157', '12345');
 INSERT INTO appPetCare.Customer (firstname, lastname, email, phoneNumber, password) VALUES('Amy', 'Williams', 'amywilliams@mail.com', '0491 570 158', '12345');
