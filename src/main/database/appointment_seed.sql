@@ -6,7 +6,6 @@ CREATE TEMPORARY TABLE temp_date (
 );
 
 DELIMITER $$
-
 DROP PROCEDURE IF EXISTS temp_loop;
 CREATE PROCEDURE temp_loop()
 BEGIN
@@ -22,13 +21,9 @@ BEGIN
 		
 		SET x = x + 1;
 	END LOOP;
-	
 END$$
-
 DELIMITER ;
-
 CALL temp_loop();
---------------------------------
 
 -- POPULATE TEMP_TIME TABLE
 DROP TABLE IF EXISTS temp_time;
@@ -37,9 +32,8 @@ CREATE TEMPORARY TABLE temp_time (
 	select_time TIME
 );
 
-DELIMITER $$
-
 DROP PROCEDURE IF EXISTS temp_loop;
+DELIMITER $$
 CREATE PROCEDURE temp_loop()
 BEGIN
 	DECLARE X INT;
@@ -59,11 +53,8 @@ BEGIN
 		
 	END LOOP;
 END$$
-
 DELIMITER ;
-
 CALL temp_loop();
---------------------------------
 
 -- POPULATE TEMP_APPOINTMENT TABLE
 DROP TABLE IF EXISTS temp_appointment;
@@ -79,9 +70,8 @@ CREATE TEMPORARY TABLE temp_appointment (
 	isPaid BOOLEAN	
 );
 
-DELIMITER $$
-
 DROP PROCEDURE IF EXISTS temp_loop;
+DELIMITER $$
 CREATE PROCEDURE temp_loop()
 BEGIN
 	DECLARE X INT;
@@ -121,9 +111,7 @@ BEGIN
 		
 	END LOOP;
 END$$
-
 DELIMITER ;
-
 CALL temp_loop();
 
 UPDATE temp_appointment
@@ -131,9 +119,10 @@ JOIN Vet ON Vet.specializeType = temp_appointment.appointmentType
 SET temp_appointment.vetId = Vet.id
 WHERE temp_appointment.appointmentType = Vet.specializeType;
 
-SELECT * FROM temp_date;
-SELECT * FROM temp_time;
-SELECT * FROM temp_appointment;
+UPDATE temp_appointment
+JOIN Vet on Vet.id = temp_appointment.vetId
+SET temp_appointment.description = CONCAT('Dr.', Vet.Lastname, ' ', temp_appointment.petType, ' ', temp_appointment.appointmentType)
+WHERE temp_appointment.vetId = Vet.id;
 
 TRUNCATE TABLE Appointment;
 
