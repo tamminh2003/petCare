@@ -1,3 +1,4 @@
+use appPetCare;
 -- POPULATE TEMP_DATE TABLE
 DROP TABLE IF EXISTS temp_date;
 CREATE TEMPORARY TABLE temp_date (
@@ -5,8 +6,8 @@ CREATE TEMPORARY TABLE temp_date (
 	select_date Date
 );
 
-DELIMITER $$
 DROP PROCEDURE IF EXISTS temp_loop;
+DELIMITER $$
 CREATE PROCEDURE temp_loop()
 BEGIN
 	DECLARE X INT;
@@ -75,35 +76,32 @@ DELIMITER $$
 CREATE PROCEDURE temp_loop()
 BEGIN
 	DECLARE X INT;
-	DECLARE rand_num DECIMAL(9,2);
-	DECLARE rand_num2 DECIMAL(9,2);
 	SET X = 0;	
 	loop_start: LOOP
-		IF X > 19 THEN
+		IF X > 29 THEN
 			LEAVE loop_start;
 		END IF;
-		
-		SET rand_num = RAND();
-		SET rand_num2 = RAND();
+        
+        SET @rand_num := rand();
 			
 		INSERT INTO temp_appointment 
 			(appointmentDate, startTime, appointmentType, petType, totalCost, isPaid)
 		SELECT 
-				(SELECT select_date FROM temp_date WHERE index_num = FLOOR(rand_num*(7-1)+1)),
-				(SELECT select_time FROM temp_time WHERE index_num = FLOOR(rand_num*(16-1)+1)),
+				(SELECT select_date FROM temp_date order by rand() limit 1),
+				(SELECT select_time FROM temp_time order by rand() limit 1),
 				CASE
-					WHEN FLOOR(rand_num*(3-1)+1) = 1 THEN 'DENTISTRY'
-					WHEN FLOOR(rand_num*(3-1)+1) = 2 THEN 'SURGERY'
+					WHEN FLOOR(rand()*3+1) = 1 THEN 'DENTISTRY'
+					WHEN FLOOR(rand()*3+1) = 2 THEN 'SURGERY'
 					ELSE 'GENERAL'
 				END,
 				CASE
-					WHEN FLOOR(rand_num2*(3-1)+1) < 1 THEN 'CAT'
-					WHEN FLOOR(rand_num2*(3-1)+1) < 2 THEN 'BIRD'
+					WHEN (FLOOR(rand()*3)+1) < 1 THEN 'CAT'
+					WHEN (FLOOR(rand()*3)+1) < 2 THEN 'BIRD'
 					ELSE 'DOG'
 				END,
-				rand_num*(100-50)+50,
+				rand()*(100-50+1)+50,
 				CASE
-					WHEN rand_num2 > 0.50 THEN TRUE
+					WHEN rand() > 0.50 THEN TRUE
 					ELSE FALSE
 				END;
 		
@@ -116,7 +114,12 @@ CALL temp_loop();
 
 UPDATE temp_appointment
 JOIN Vet ON Vet.specializeType = temp_appointment.appointmentType
-SET temp_appointment.vetId = Vet.id
+SET temp_appointment.vetId = 
+	CASE
+		WHEN temp_appointment.appointmentType = 'GENERAL' THEN (SELECT id FROM Vet WHERE specializeType = 'GENERAL' ORDER BY rand() LIMIT 1)
+        WHEN temp_appointment.appointmentType = 'SURGERY' THEN (SELECT id FROM Vet WHERE specializeType = 'SURGERY' ORDER BY rand() LIMIT 1)
+        WHEN temp_appointment.appointmentType = 'DENTISTRY' THEN (SELECT id FROM Vet WHERE specializeType = 'DENTISTRY' ORDER BY rand() LIMIT 1) 
+	END
 WHERE temp_appointment.appointmentType = Vet.specializeType;
 
 UPDATE temp_appointment
