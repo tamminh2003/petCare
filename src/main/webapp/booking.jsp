@@ -1,4 +1,4 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="org.apache.commons.lang3.StringUtils" %>
@@ -17,13 +17,6 @@
 		<!-- Header starts -->
 		<jsp:include page="layout/header.jsp" />
 		<!-- Header ends -->
-		
-<%-- 		<c:out value="${petTypeList.getClass()}" /> --%>
-<%-- 		<c:forEach items="${petTypeList.length()}" var="each"> --%>
-<%-- 			<c:out value="${each}"/> --%>
-<%-- 		</c:forEach> --%>
-		
-		<% out.println(((String[])request.getAttribute("petTypeList")).length); %>
 		
 		<div class="container">
 			<div id="customer-details-form" class="container border border-dark border-1 p-3 m-3 position-relative">

@@ -9,48 +9,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.dao.UserDAO;
+import main.java.dao.CustomerDAO;
+import main.java.entity.Customer;
 
-
-
-/**
- * Servlet implementation class LoginServlet
- */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private CustomerDAO customerDAO;
+
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        this.customerDAO = CustomerDAO.getDAO();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request,  response);
-
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String email = request.getParameter("username");
 		String password = request.getParameter("password");
-
-		UserDAO userDAO = new UserDAO();
-		boolean loginSuccessful = userDAO.checkUserByPasswordAndUsername(email, password);
+		Customer customer = null;
 		
-		if (loginSuccessful) {
-			request.getSession().setAttribute("user", email);
+		try {
+			customer = customerDAO.selectLogIn(email, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (customer != null) {
+			request.getSession().setAttribute("user", customer.getEmail());
+			request.getSession().setAttribute("firstname", customer.getFirstname());
 			response.sendRedirect("home");
 		} else {
 			String error = "Incorrect user or password";

@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS Appointment
 	petType VARCHAR(255) NOT NULL, -- TODO: link this to petType table
 	totalCost decimal(9,2) DEFAULT 0.0,
 	isPaid boolean DEFAULT False,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE KEY 'Appointment_unique' (appointmentDate, startTime)
 );
 
 DROP TABLE IF EXISTS Vet;
@@ -61,3 +62,5 @@ INSERT INTO appPetCare.Vet (firstname, lastname, email, phoneNumber, specializeT
 INSERT INTO appPetCare.Vet (firstname, lastname, email, phoneNumber, specializeType) VALUES('Olivia', 'Wilson', 'oliviawilson@mail.com', '(02) 9905 6202', 'GENERAL');
 INSERT INTO appPetCare.Vet (firstname, lastname, email, phoneNumber, specializeType) VALUES('David', 'Anderson', 'davidanderson@mail.com', '(03) 9786 5666', 'SURGERY');
 INSERT INTO appPetCare.Vet (firstname, lastname, email, phoneNumber, specializeType) VALUES('John', 'Wick', 'johnwick@mail.com', '(02) 8396 9800', 'DENTISTRY');
+INSERT INTO appPetCare.Vet (firstname, lastname, email, phoneNumber, specializeType) VALUES('Joseph', 'Francesco', 'josephfrancesco@mail.com', '(02) 8396 9823', 'DENTISTRY');
+

@@ -140,3 +140,4 @@ SELECT * FROM Appointment;
 DROP TABLE temp_appointment;
 DROP TABLE temp_date;
 DROP TABLE temp_time;
+DROP PROCEDURE temp_loop;
