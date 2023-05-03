@@ -1,6 +1,5 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,14 +30,10 @@
 		<div class="mt-3">
 			You are a new member?
 			<a href ="signup">Join us here.</a>
+			<hr>
+			<span class="text-danger">${error}</span>
 		</div>
 	</div>
-
-	
-	
-	<br>
-	${error}
-	<hr>
 	
 	<!-- Footer starts -->
 	<jsp:include page="layout/footer.jsp" />

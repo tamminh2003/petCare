@@ -1,25 +1,50 @@
 package main.java.entity;
 
-import java.sql.Timestamp;
-
 public class Customer {
 	private int id;
 	private String firstname;
 	private String lastname;
 	private String email;
 	private String phoneNumber;
-	private Timestamp createdAt;
 	private String password;
+	
+	static final String DEFAULT_FIRST_NAME = "";
+	static final String DEFAULT_LAST_NAME = "";
+	static final String DEFAULT_EMAIL = "";
+	static final String DEFAULT_PHONE_NUMBER = "";
+	static final String DEFAULT_PASSWORD = "";
 
-	public Customer(int id, String firstname, String lastname, String email, String phoneNumber, Timestamp createdAt, String password) {
-		super(); // not really needed as java implicitly inherit Object class
+	public Customer(int id, String firstname, String lastname, String email, String phoneNumber, String password) {
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
-		this.createdAt = createdAt;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
+	}
+	
+	public Customer(int id, String firstname, String lastname, String email, String phoneNumber) {
+		this(id, firstname, lastname, email, phoneNumber, DEFAULT_PASSWORD);
+	}
+	
+	public Customer(int id, String firstname, String lastname, String email) {
+		this(id, firstname, lastname, email, DEFAULT_PHONE_NUMBER);
+	}
+	
+	public Customer(int id, String firstname, String lastname) {
+		this(id, firstname, lastname, DEFAULT_EMAIL);
+	}
+	
+	public Customer(int id, String firstname) {
+		this(id, firstname, DEFAULT_LAST_NAME);
+	}
+	
+	public Customer(int id) {
+		this(id, DEFAULT_FIRST_NAME);
+	}
+	
+	public Customer() {
+		this(-1);
 	}
 
 	public int getId() {
@@ -54,8 +79,6 @@ public class Customer {
 		this.email = email;
 	}
 	
-	
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -64,21 +87,10 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Timestamp getCreatedAt() {
-		return createdAt;
-	}
-
-	// TODO: Usually we don't modify createdAt information.
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	// TODO: This need to be encrypted
 	public String getPassword() {
 		return password;
 	}
 
-	// TODO: THis need to be encrypted
 	public void setPassword(String password) {
 		this.password = password;
 	}
