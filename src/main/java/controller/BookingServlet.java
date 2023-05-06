@@ -25,7 +25,6 @@ public class BookingServlet extends HttpServlet {
      */
     public BookingServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -49,7 +48,7 @@ public class BookingServlet extends HttpServlet {
 		request.setAttribute("petType", request.getParameter("petType"));
 		request.setAttribute("petTypeList", new String[] {"dog", "cat", "bird"});
 		request.setAttribute("appointmentType", request.getParameter("appointmentType"));
-		request.setAttribute("appointmentTypeList", new String[] {"consultation", "surgery", "desexing"});
+		request.setAttribute("appointmentTypeList", new String[] {"general", "surgery", "dentistry"});
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/booking.jsp");
 		dispatcher.forward(request,  response);

@@ -125,37 +125,37 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 			crossorigin="anonymous"></script>
-		<script>
-        if (document.querySelector("#petType").value != '' && document.querySelector("#appointmentType").value != '') {
-            document.querySelector("#timetable").style.display = '';
-        } else {
-            document.querySelector("#timetable").style.display = 'none';
-        } 
+<!-- 		<script> -->
+//         if (document.querySelector("#petType").value != '' && document.querySelector("#appointmentType").value != '') {
+//             document.querySelector("#timetable").style.display = '';
+//         } else {
+//             document.querySelector("#timetable").style.display = 'none';
+//         } 
 		
-			document.querySelector("#petType").addEventListener("change", function(e) {
-				if (document.querySelector("#petType").value != '' && document.querySelector("#appointmentType").value != '') {
-					document.querySelector("#timetable").style.display = '';
-				} else {
-					document.querySelector("#timetable").style.display = 'none';
-				}			
-			});
+// 			document.querySelector("#petType").addEventListener("change", function(e) {
+// 				if (document.querySelector("#petType").value != '' && document.querySelector("#appointmentType").value != '') {
+// 					document.querySelector("#timetable").style.display = '';
+// 				} else {
+// 					document.querySelector("#timetable").style.display = 'none';
+// 				}			
+// 			});
 			
-			document.querySelector("#appointmentType").addEventListener("change", function(e) {
-				if (document.querySelector("#petType").value != '' && document.querySelector("#appointmentType").value != '') {
-					document.querySelector("#timetable").style.display = '';
-				} else {
-					document.querySelector("#timetable").style.display = 'none';
-				}
-			});
+// 			document.querySelector("#appointmentType").addEventListener("change", function(e) {
+// 				if (document.querySelector("#petType").value != '' && document.querySelector("#appointmentType").value != '') {
+// 					document.querySelector("#timetable").style.display = '';
+// 				} else {
+// 					document.querySelector("#timetable").style.display = 'none';
+// 				}
+// 			});
 			
-			document.querySelector("#btnNextWeek").addEventListener("click", function(e) {
-				var displayWeek = parseInt(document.querySelector("#displayWeek").value);
-				document.querySelector("#displayWeek").value = displayWeek + 1;
-				document.querySelector("#mainForm").submit();
-			});
+// 			document.querySelector("#btnNextWeek").addEventListener("click", function(e) {
+// 				var displayWeek = parseInt(document.querySelector("#displayWeek").value);
+// 				document.querySelector("#displayWeek").value = displayWeek + 1;
+// 				document.querySelector("#mainForm").submit();
+// 			});
 			
 
-		</script>
+<!-- 		</script> -->
 	</body>
 
 	</html>

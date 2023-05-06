@@ -2,6 +2,7 @@ package main.java.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.time.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,30 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.dao.AppointmentDAO;
-import main.java.dao.CustomerDAO;
-import main.java.entity.Customer;
 import main.java.entity.VetTimeslot;
 
-/**
- * Servlet implementation class BookingDetailServlet
- */
 @WebServlet("/BookingDetailServlet")
 public class BookingDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public BookingDetailServlet() {
         super();
- 
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AppointmentDAO appointmentDAO = new AppointmentDAO();
 			
@@ -45,8 +33,6 @@ public class BookingDetailServlet extends HttpServlet {
 		
 		try {
 			ArrayList<VetTimeslot> vetTimeslots = appointmentDAO.getAvailableVetTimeslot(appointmentType);
-			System.out.println(vetTimeslots.size());
-			System.out.println(vetTimeslots);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,11 +41,7 @@ public class BookingDetailServlet extends HttpServlet {
 		dispatcher.forward(request,  response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

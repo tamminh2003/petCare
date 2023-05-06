@@ -24,7 +24,7 @@ public class AppointmentDAO {
 			dbConnector = Service.getDbConnector();
 		}
 	}
-	
+		
 	public void setDbConnector(IDbConnector dbConnector) {
 		this.dbConnector = dbConnector;
 	}
@@ -35,7 +35,6 @@ public class AppointmentDAO {
 		}
 		
 		try (Connection connection = dbConnector.makeConnection()) {
-			System.out.println("appointmentType: " + appointmentType);
 			ArrayList<VetTimeslot> vetTimeslots = new ArrayList<VetTimeslot>();
 			
 			ResultSet rs = null;
@@ -45,7 +44,6 @@ public class AppointmentDAO {
 			procedure.setString(1, appointmentType);
 			
 			rs = procedure.executeQuery();
-			System.out.println(rs);
 			int count = 0;
 			int lastVetId = 0;
 			LocalDate lastDate = null;
@@ -54,15 +52,14 @@ public class AppointmentDAO {
 			while(rs.next()) {
 				int vetId = rs.getInt("vetId");
 				String vetName = rs.getString("vetName");
-				String timeslot = rs.getString("timeslot");
-				LocalDate date = LocalDate.parse(timeslot);
-				LocalTime time = LocalTime.parse(timeslot);
+				String timeslotString = rs.getString("timeslot");
+				String dateString = timeslotString.split(" ")[0];
+				String timeString = timeslotString.split(" ")[1];
 				
-				System.out.println("date: " + date);
-				System.out.println("time: " + time);
+				LocalDate date = LocalDate.parse(dateString);
+				LocalTime time = LocalTime.parse(timeString);
 				
 				if (vetId != lastVetId) {
-					System.out.println("new VetTimeslot");
 					count++;
 					vetTimeslots.add(
 						new VetTimeslot(
@@ -78,15 +75,12 @@ public class AppointmentDAO {
 				timeslotHashmap = vetTimeslots.get(count-1).getTimeslots();
 				
 				if (date != lastDate) {
-					System.out.println("new timeArray");
 					timeslotHashmap.put(date, new ArrayList<LocalTime>());
 					lastDate = date;
 				}
 				
-				System.out.println("Adding time to timeslots");
 				timeslotHashmap.get(date).add(time);
 			}
-			System.out.println(vetTimeslots);
 			return vetTimeslots;
 			
 			
