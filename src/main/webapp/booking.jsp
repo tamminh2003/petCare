@@ -21,8 +21,8 @@
 		<div class="container">
 			<div id="customer-details-form" class="container border border-dark border-1 p-3 m-3 position-relative">
 				<div class="row">
-					<form action="BookingServlet" method="POST" id="mainForm" >
-					<input type="hidden" value="${displayWeek}" id="displayWeek" name="displayWeek"></input>
+					<form action="BookingDetailServlet" method="POST" id="mainForm" >
+					<%-- <input type="hidden" value="${displayWeek}" id="displayWeek" name="displayWeek"></input> --%>
 						<div class="mb-3">
 							<label for="petType" class="form-label">Pet Type</label>
 							<select class="form-select" id="petType" name="petType">
@@ -68,8 +68,11 @@
 									</c:choose>
 								</c:forEach>
 							</select>
-						</div>												
-						<table id="timetable" class="table" style="display:none">
+						</div>		
+						<div>
+								<button type="submit" class="btn btn-primary">Next</button>
+						</div>										
+		<%-- 				<table id="timetable" class="table" style="display:none">
 							<tr>
 								<td colspan="4">
 								  <button class="btn btn-primary" type="button" id="btnPrevWeek">Previous Week</button>
@@ -109,7 +112,7 @@
 									</c:forEach>
 								</tr>
 							</c:forEach>
-						</table>
+						</table> --%>
 					</form>
 				</div>
 			</div>

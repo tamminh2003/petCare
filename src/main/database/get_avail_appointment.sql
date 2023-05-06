@@ -40,9 +40,11 @@ CREATE TEMPORARY TABLE temp_timeslot(
 INSERT INTO temp_timeslot (timeslot)
 SELECT CONCAT(select_date, ' ', select_time) as timeslot
 FROM temp_date d
-CROSS JOIN temp_time t
-ORDER BY select_date ASC, select_time ASC;
+CROSS JOIN temp_time t;
 
+-- SELECT * FROM temp_timeslot;
+
+-- TODO: lay phan available 
 -- POPULATE temp_vet
 DROP TABLE IF EXISTS temp_vet;
 CREATE TEMPORARY TABLE temp_vet (
@@ -53,38 +55,23 @@ CREATE TEMPORARY TABLE temp_vet (
 INSERT INTO temp_vet (vetId, specializeType)
 SELECT id, specializeType from Vet where specializeType = pAppointmentType;
 
--- POPULATE temp_vet_appointment
-DROP TABLE IF EXISTS temp_vet_appointment;
-CREATE TEMPORARY TABLE temp_vet_appointment (
-	index_num int auto_increment primary key,
-    vetId int,
-    timeslot varchar(255)
-);
-SET X = 1;
-SET @MAX_X := (SELECT MAX(index_num) FROM temp_vet);
-WHILE X <= @MAX_X DO
-	SET @vetId := (SELECT vetId FROM temp_vet WHERE index_num = X);
-	INSERT INTO temp_vet_appointment (vetId, timeslot)
-	SELECT 
-		@vetId as vetId,
-		t1.timeslot as timeslot
-	FROM temp_timeslot t1
-	LEFT OUTER JOIN (
-		SELECT concat(a.appointmentDate, ' ', a.startTime) AS timeslot
-		FROM Appointment a
-		WHERE a.vetId = @vetId
-		AND a.appointmentDate BETWEEN CURDATE() AND ADDDATE(CURDATE(), 7)) AS t2
-	ON t1.timeslot = t2.timeslot;
-    SET X = X + 1;
-END WHILE;
+-- SELECT * FROM temp_vet;
 
-SELECT * FROM temp_vet_appointment;
+
+    
+SELECT all_timeslot.vetId, all_timeslot.timeslot, CONCAT(v.firstname, ' ', v.lastname) AS vetName FROM (
+	SELECT temp_vet.vetId, temp_timeslot.timeslot
+	FROM temp_vet
+	CROSS JOIN temp_timeslot) AS all_timeslot
+LEFT JOIN Appointment a ON (all_timeslot.timeslot = CONCAT(appointmentDate, ' ', startTime))
+JOIN Vet v on all_timeslot.vetId = v.id 
+WHERE appointmentDate IS NULL
+ORDER BY all_timeslot.timeslot;
 
 DROP TABLE IF EXISTS temp_vet;
 DROP TABLE IF EXISTS temp_timeslot;
 DROP TABLE IF EXISTS temp_date;
 DROP TABLE IF EXISTS temp_time;
 DROP TABLE IF EXISTS temp_vet_appointment;
-
 END$$
 

@@ -4,7 +4,7 @@ import java.sql.*;
 import main.java.util.myinterface.IDbConnector;
 
 public class MySqlDBConnector implements IDbConnector{
-	private static final String dbUrl = "jdbc:mysql://localhost:3306/appPetCare";
+	private static final String dbUrl = "jdbc:mysql://localhost:3306/appPetCare?serverTimezone=Australia/Sydney";
 	private static final String dbUsername = "root";
 	private static final String dbPassword = "PetCare123";
 	
@@ -28,5 +28,7 @@ public class MySqlDBConnector implements IDbConnector{
 			e.printStackTrace();
 		}
 		return null;
+		
+		
 	}
 }

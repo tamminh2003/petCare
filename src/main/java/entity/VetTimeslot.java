@@ -1,40 +1,46 @@
 package main.java.entity;
 
 import java.util.ArrayList;
-import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.time.*;
 
 public class VetTimeslot {
-	private int _vetId;
-	private String _firstName;
-	private String _lastName;
-	private ArrayList<LocalDateTime> _timeslots; // Available timeslots
+	private int vetId;
+	private String vetName;
+	private HashMap<LocalDate, ArrayList<LocalTime>> timeslots; 
 	
-	public VetTimeslot(int _vetId, String _firstName, String _lastName) {
+	public VetTimeslot(int vetId, String vetName, HashMap<LocalDate, ArrayList<LocalTime>> timeslots) {
 		super();
-		this._vetId = _vetId;
-		this._firstName = _firstName;
-		this._lastName = _lastName;
-		this._timeslots = new ArrayList<LocalDateTime>();
+		this.vetId = vetId;
+		this.vetName = vetName;
+		this.timeslots = timeslots;
+	}
+
+	public int getVetId() {
+		return vetId;
+	}
+
+	public void setVetId(int vetId) {
+		this.vetId = vetId;
+	}
+
+	public String getVetName() {
+		return vetName;
+	}
+
+	public void setVetName(String vetName) {
+		this.vetName = vetName;
+	}
+
+	public HashMap<LocalDate, ArrayList<LocalTime>> getTimeslots() {
+		return timeslots;
+	}
+
+	public void setTimeslots(HashMap<LocalDate, ArrayList<LocalTime>> timeslots) {
+		this.timeslots = timeslots;
 	}
 	
-	public int get_vetId() {
-		return _vetId;
-	}
 	
-	public String get_firstName() {
-		return _firstName;
-	}
 	
-	public String get_lastName() {
-		return _lastName;
-	}
-	
-	public ArrayList<LocalDateTime> get_timeslots() {
-		return _timeslots;
-	}
-	
-	public ArrayList<LocalDateTime> addTimeslot(LocalDateTime timeslot) {
-		_timeslots.add(timeslot);
-		return _timeslots;
-	}
+
 }
