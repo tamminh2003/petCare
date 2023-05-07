@@ -39,6 +39,10 @@ public class VetTimeslot {
 	public void setTimeslots(HashMap<LocalDate, ArrayList<LocalTime>> timeslots) {
 		this.timeslots = timeslots;
 	}
+	  @Override
+	    public String toString() {
+	        return this.vetId + " + " + this.vetName + " + " + this.timeslots;
+	    }
 	
 	
 	

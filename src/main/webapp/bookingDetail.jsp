@@ -1,5 +1,13 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page 
+	import="java.time.*" %>	
+<%@ page 
+	import="java.time.format.TextStyle" %>	
+	<%@ page 
+		import="java.util.Locale" %>	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,35 +30,37 @@
 
 		<div class="container border border-dark border-1 p-3 m-3">
 		<form>
-			<div class="row">
+			<c:forEach var = "vetTimeslot" items = "${vetTimeslotList}">
+			
+				
+				<div class="row">
 	
-				<div class="col">Dr Alex Johnson</div>
+				<div class="col">${vetTimeslot.vetName}</div>
 				
 				<div class="col-9">
 			
 					<div class="row">
-						<div class="col">
-							<div class="date" data-time="0900">
-								<div>Sat</div>
-								<div>Jan 21</div>
-							</div>
-							<div class="time-button" data-time="0900">9:00 AM</div>
-							<div class="time-button" data-time="0930">9:30 AM</div>
-							<div class="time-button" data-time="1000">10:00 AM</div>
-							<div class="time-button" data-time="1030">10:30 AM</div>
-						
-						</div>	
-	
-						<div class="col">test</div>		
-						<div class="col">test</div>		
-						<div class="col">test</div>	
-						<div class="col">test</div>				
+						<c:forEach var="date" items="${vetTimeslot.timeslots.keySet()}">
+						    <c:set var="dateObject" value="${java.time.LocalDate.parse(date)}"/>
+						    <c:set var="debug" value="testing"/>
+						    <c:set var="dayOfWeekObject" value="${dateObject.getDayOfWeek()}"/>
+						    <c:set var="dayOfWeekString" value="${dayOfWeekObject.getDisplayName(TextStyle.FULL, Locale.getDefault())}"/>
+					
+						    <div class="col">
+						        <div class="date" data-time="0900">
+						        	  <%-- TRY TO LOG OUT DATEOBJECT TO DEBUG BUT IT IS EMPTY --%>
+						            <div>${dateObject}</div> 
+						            <div>${date}</div>
+						        </div>
+						        	<c:forEach var="time" items="${vetTimeslot.timeslots.get(date)}">	
+						        		<div class="time-button" data-time="0930">${time}</div>
+						        	</c:forEach>
+						    </div>
+						</c:forEach>
 					</div>
-					
-					
 				</div>
 			</div>
-			
+			</c:forEach>
 			<div class="d-flex flex-row justify-content-between m-5">
 				<div>
 				 <button type="button" id="back-button">Back</button>

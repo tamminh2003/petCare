@@ -66,7 +66,9 @@ SELECT all_timeslot.vetId, all_timeslot.timeslot, CONCAT(v.firstname, ' ', v.las
 LEFT JOIN Appointment a ON (all_timeslot.timeslot = CONCAT(appointmentDate, ' ', startTime))
 JOIN Vet v on all_timeslot.vetId = v.id 
 WHERE appointmentDate IS NULL
-ORDER BY all_timeslot.timeslot;
+ORDER BY 
+all_timeslot.vetId,
+all_timeslot.timeslot
 
 DROP TABLE IF EXISTS temp_vet;
 DROP TABLE IF EXISTS temp_timeslot;

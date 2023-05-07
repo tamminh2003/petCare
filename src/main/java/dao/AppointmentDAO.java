@@ -68,15 +68,21 @@ public class AppointmentDAO {
 								new HashMap<LocalDate, ArrayList<LocalTime>>()
 						)
 					);
+				
 					lastDate = null;
+			
+				
 					lastVetId = vetId;
 				}
 				
 				timeslotHashmap = vetTimeslots.get(count-1).getTimeslots();
+				System.out.println("date: " + date);
+				System.out.println("lastDate: "+lastDate);
+				if (!date.equals(lastDate)) {
 				
-				if (date != lastDate) {
 					timeslotHashmap.put(date, new ArrayList<LocalTime>());
 					lastDate = date;
+					System.out.println("date != date branch is triggered");
 				}
 				
 				timeslotHashmap.get(date).add(time);

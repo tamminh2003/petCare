@@ -33,6 +33,14 @@ public class BookingDetailServlet extends HttpServlet {
 		
 		try {
 			ArrayList<VetTimeslot> vetTimeslots = appointmentDAO.getAvailableVetTimeslot(appointmentType);
+			request.setAttribute("vetTimeslotList", vetTimeslots);
+			
+			for (int i = 0; i < vetTimeslots.size(); i++) {
+				  System.out.println(vetTimeslots.get(i).toString());
+			
+				}
+
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
