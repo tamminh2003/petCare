@@ -1,20 +1,24 @@
 package main.java.entity;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
+import java.util.TreeMap;
 import java.time.*;
 
 public class VetTimeslot {
 	private int vetId;
 	private String vetName;
-	private HashMap<LocalDate, ArrayList<LocalTime>> timeslots; 
+	private TreeMap<LocalDate, ArrayList<LocalTime>> timeslots; 
 	
-	public VetTimeslot(int vetId, String vetName, HashMap<LocalDate, ArrayList<LocalTime>> timeslots) {
+	public VetTimeslot(int vetId, String vetName, TreeMap<LocalDate, ArrayList<LocalTime>> timeslots) {
 		super();
 		this.vetId = vetId;
 		this.vetName = vetName;
 		this.timeslots = timeslots;
 	}
+	
+	public VetTimeslot() {}
 
 	public int getVetId() {
 		return vetId;
@@ -32,11 +36,11 @@ public class VetTimeslot {
 		this.vetName = vetName;
 	}
 
-	public HashMap<LocalDate, ArrayList<LocalTime>> getTimeslots() {
+	public TreeMap<LocalDate, ArrayList<LocalTime>> getTimeslots() {
 		return timeslots;
 	}
 
-	public void setTimeslots(HashMap<LocalDate, ArrayList<LocalTime>> timeslots) {
+	public void setTimeslots(TreeMap<LocalDate, ArrayList<LocalTime>> timeslots) {
 		this.timeslots = timeslots;
 	}
 	  @Override

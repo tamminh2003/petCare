@@ -49,7 +49,6 @@ public class Appointment {
 	
 	public Appointment() {
 		super();
-		
 	}
 
 	public int getId() {

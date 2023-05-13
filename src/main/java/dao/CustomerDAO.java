@@ -47,12 +47,10 @@ public class CustomerDAO {
 		Customer customer = this.customerCache.get(id);
 		if (customer == null) {
 			try(Connection connection = dbConnector.makeConnection()) {
-				ResultSet rs = null;
-				PreparedStatement ps = null;
 				String sqlQuery = "SELECT firstname, lastname, email, phonenumber FROM Customer WHERE id = ?";
-				ps = connection.prepareStatement(sqlQuery);
+				PreparedStatement ps = connection.prepareStatement(sqlQuery);
 				ps.setInt(1, id);
-				rs = ps.executeQuery();
+				ResultSet rs = ps.executeQuery();
 				if (rs.next() == true) {  
 					customer = new Customer(id, rs.getString("firstname"), rs.getString("lastname"), rs.getString("email"), rs.getString("phoneNumber"));
 				} else {

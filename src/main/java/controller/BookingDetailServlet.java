@@ -17,15 +17,15 @@ import main.java.entity.VetTimeslot;
 @WebServlet("/BookingDetailServlet")
 public class BookingDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private AppointmentDAO appointmentDAO;
 
     public BookingDetailServlet() {
         super();
+        this.appointmentDAO = AppointmentDAO.getDAO();
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AppointmentDAO appointmentDAO = new AppointmentDAO();
-			
 		// Data needed to create appointment
 		String petType = request.getParameter("petType");
 		String appointmentType = request.getParameter("appointmentType");
@@ -34,13 +34,6 @@ public class BookingDetailServlet extends HttpServlet {
 		try {
 			ArrayList<VetTimeslot> vetTimeslots = appointmentDAO.getAvailableVetTimeslot(appointmentType);
 			request.setAttribute("vetTimeslotList", vetTimeslots);
-			
-			for (int i = 0; i < vetTimeslots.size(); i++) {
-				  System.out.println(vetTimeslots.get(i).toString());
-			
-				}
-
-	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

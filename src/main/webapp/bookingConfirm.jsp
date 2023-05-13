@@ -23,10 +23,15 @@
 	<!-- Header ends -->
 
 	<div class="d-flex flex-column  align-items-center">
-		<div class="">Banner</div>
-		<hr>
-		<h1>Booking Confirm</h1>
-		<div>${params.time}</div>
+		<hr />
+		<form action="BookingConfirmServlet" method="POST">
+			<input type="hidden" name="timeslot" value="${timeslot}"/>
+			<input type="hidden" name="vetid" value="${vet.getId()}"/>
+			<h1>Booking Confirm</h1>
+			<div>${timeslot}</div>
+			<div><c:out value="With Dr ${vet.getFirstName()} ${vet.getLastName()}"/></div>
+			<button type="submit" class="btn btn-primary">Confirm</button>
+		</form>
 	
 	</div>
 

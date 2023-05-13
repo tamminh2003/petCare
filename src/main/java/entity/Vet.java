@@ -6,7 +6,7 @@ public class Vet {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private enum Specialization {
+    public enum Specialization {
     	GENERAL,
         DENTISTRY,
         SURGERY,
@@ -14,8 +14,7 @@ public class Vet {
 
     private Specialization specialization;
 
-	public Vet(int id, String firstName, String lastName, String email, String phoneNumber,
-			Specialization specialization) {
+	public Vet(int id, String firstName, String lastName, String email, String phoneNumber, Specialization specialization) {
 		super();
 		this.id = id;
 		this.firstName = firstName;

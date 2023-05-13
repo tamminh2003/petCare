@@ -1,6 +1,9 @@
 package main.java.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,38 +12,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class BookingConfirm
- */
+import main.java.dao.AppointmentDAO;
+import main.java.dao.VetDAO;
+import main.java.entity.Vet;
+
 @WebServlet("/BookingConfirmServlet")
 public class BookingConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private VetDAO vetDAO;
+	private AppointmentDAO appointmentDAO;
+
     public BookingConfirmServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        this.vetDAO = VetDAO.getDAO();
+        this.appointmentDAO = AppointmentDAO.getDAO();
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	
+		String timeslot = request.getParameter("timeslot");
+		Vet vet = vetDAO.selectId(Integer.parseInt(request.getParameter("vetId")));
+		request.setAttribute("timeslot", timeslot);
+		request.setAttribute("vet", vet);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/bookingConfirm.jsp");
 		dispatcher.forward(request,  response);
 	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String timeslot = request.getParameter("timeslot");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		LocalDate appointmentDate = LocalDate.parse(timeslot, formatter);
+		LocalTime startTime = LocalTime.parse(timeslot, formatter);
+		Vet vet = vetDAO.selectId(Integer.parseInt(request.getParameter("vetid")));
+		appointmentDAO.bookAppointment(1, vet.getId(), appointmentDate, startTime, "Sample booking", "GENERAL", "DOG", 50.00);
+		response.sendRedirect("home");
 	}
 
 }

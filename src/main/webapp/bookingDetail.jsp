@@ -1,12 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page 
-	import="java.time.*" %>	
-<%@ page 
-	import="java.time.format.TextStyle" %>	
-	<%@ page 
-		import="java.util.Locale" %>	
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.time.LocalDate" %>	
+<%@ page import="java.time.format.TextStyle" %>	
+<%@ page import="java.util.Locale" %>	
 
 <!DOCTYPE html>
 <html>
@@ -29,47 +25,42 @@
 	<div class="container ">
 
 		<div class="container border border-dark border-1 p-3 m-3">
-		<form>
-			<c:forEach var = "vetTimeslot" items = "${vetTimeslotList}">
-			
-				
+		<form method="GET" action="BookingConfirmServlet" id="mainForm">
+		<input type="hidden" value="" id="timeslot" name="timeslot"/>
+		<input type="hidden" value="" id="vetId" name="vetId"/>
+			<c:forEach var = "vetTimeslot" items = "${vetTimeslotList}">		
 				<div class="row">
-	
 				<div class="col">${vetTimeslot.vetName}</div>
-				
 				<div class="col-9">
-			
 					<div class="row">
-						<c:forEach var="date" items="${vetTimeslot.timeslots.keySet()}">
-						    <c:set var="dateObject" value="${java.time.LocalDate.parse(date)}"/>
-						    <c:set var="debug" value="testing"/>
-						    <c:set var="dayOfWeekObject" value="${dateObject.getDayOfWeek()}"/>
-						    <c:set var="dayOfWeekString" value="${dayOfWeekObject.getDisplayName(TextStyle.FULL, Locale.getDefault())}"/>
 					
-						    <div class="col">
-						        <div class="date" data-time="0900">
-						        	  <%-- TRY TO LOG OUT DATEOBJECT TO DEBUG BUT IT IS EMPTY --%>
-						            <div>${dateObject}</div> 
-						            <div>${date}</div>
-						        </div>
-						        	<c:forEach var="time" items="${vetTimeslot.timeslots.get(date)}">	
-						        		<div class="time-button" data-time="0930">${time}</div>
-						        	</c:forEach>
-						    </div>
+						<c:forEach var="date" items="${vetTimeslot.timeslots.keySet()}">
+					    <div>${date.getDayOfWeek().toString()}</div>
+					    <div>${date.toString()}</div>
+					    <div class="col">
+			        
+			        	<c:forEach var="time" items="${vetTimeslot.timeslots.get(date)}">	
+			        		<div class="time-button" data-time="${date.toString().concat(" ").concat(time.toString())}" data-vetid="${vetTimeslot.getVetId()}">${time}</div>
+			        	</c:forEach>
+			        	
+					    </div>
 						</c:forEach>
+						
 					</div>
 				</div>
 			</div>
+			<hr />
 			</c:forEach>
+			
 			<div class="d-flex flex-row justify-content-between m-5">
 				<div>
-				 <button type="button" id="back-button">Back</button>
+				 <button type="button" id="back-button" class="btn btn-primary">Back</button>
 				</div>
 				<div>
-				 <button type="button" id="next-button">Next</button>	
-				</div>
-							 
+				 <button type="button" id="next-button" class="btn btn-primary">Next</button>	
+				</div>			 
 			</div>	
+			
 		</form>		
 		</div>
 
@@ -99,45 +90,27 @@
 			  });
 			  
 			  event.target.classList.add("selected");
-			  
-		/* 	  
-		    if(event.target.classList.contains("selected")) {
-		      event.target.classList.remove("selected");
-		    } else {
-		      
-		    } */
 		  });
 		});
 		  
 		var nextButton = document.getElementById("next-button");
+		console.log(nextButton);
 
 		function nextButtonHandler (event) {
-		  
-		  var time = '';
 		  document.querySelectorAll(".time-button").forEach(element => {
 		      if (element.classList.contains("selected")) {
-		        time = element.dataset.time; 
+		    	  document.querySelector("#timeslot").value = element.dataset.time;
+		    	  document.querySelector("#vetId").value = element.dataset.vetid;
 		      }
-		    });
-		  
-		  var formData = new FormData();
-		  formData.append("time", time);
-			console.log(formData);
-		  
-/* 	 const request = new XMLHttpRequest();
-		  request.open("POST", "BookingConfirmServlet");
-		  request.send(formData); */
-		    location.href = "BookingConfirmServlet"; 
+		  });
+		  document.querySelector("#mainForm").submit();
 		};	
 		  
 		nextButton.addEventListener("click", nextButtonHandler);
 		  
-	    document.getElementById("back-button").onclick = function () {
-	    	console.log("back clicked")
-	        location.href = `BookingServlet?time=${time}`;
-	    }
-	    
-	
+    document.getElementById("back-button").onclick = function () {
+        location.href = `BookingServlet?time=${time}`;
+    }
 	</script>
 
 
